@@ -96,6 +96,8 @@ curl -I https://astfind.robyn.top/sitemap.xml
 
 脚本会把 `AstfindKit/build/Astfind-<version>.dmg`（及 `.sha256`）复制到 `docs/downloads/`，把更新 zip 与 `latest.json` 复制到 `docs/updates/`，再上传；这两个目录是本地产物，不入库。
 
+> `docs/downloads/` 与 `docs/updates/` 是**持久产物目录**：发布新版本时只追加，不要删除旧版本，否则历史下载链接、旧 Homebrew cask 和旧更新清单会失效。Cloudflare Pages 每次部署都是完整快照，所以这两个目录必须在部署机上长期保留。
+
 应用内更新固定读取：
 
 ```text
