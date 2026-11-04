@@ -15,6 +15,7 @@ import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(here, '..', '..');
 const repoURL = (process.env.ASTFIND_REPO || 'https://github.com/artrobin-cn/astfind').replace(/\/+$/, '');
+const homepage = (process.env.ASTFIND_HOMEPAGE || 'https://astfind.robyn.top/').replace(/\/+$/, '');
 const buildDir = path.join(repo, 'AstfindKit', 'build');
 
 function latestDMG() {
@@ -45,7 +46,7 @@ const cask = template
   .replaceAll('{{VERSION}}', version)
   .replaceAll('{{SHA256}}', sha256)
   .replaceAll('{{URL}}', url)
-  .replaceAll('{{HOMEPAGE}}', repoURL);
+  .replaceAll('{{HOMEPAGE}}', homepage);
 
 const output = path.join(buildDir, 'astfind.rb');
 fs.writeFileSync(output, cask);

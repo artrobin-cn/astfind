@@ -175,7 +175,7 @@
 
 - **DMG**：从 [Releases](https://github.com/artrobin-cn/astfind/releases) 下载，拖入「应用程序」。未公证，首次打开需在「系统设置 → 隐私与安全性」放行。
 - **npm**（Node.js 18+）：`npm install -g astfind && astfind`。装到 `~/Applications`，无需 sudo；安装前校验 SHA-256、bundle ID、arm64 与代码签名完整性。
-- **Homebrew**（发布后）：`brew install --cask artrobin-cn/astfind/astfind`。
+- **Homebrew**：`brew install --cask artrobin-cn/astfind/astfind`（tap：[homebrew-astfind](https://github.com/artrobin-cn/homebrew-astfind)）。
 
 ### 从源码
 
