@@ -27,5 +27,9 @@ AstfindKit/scripts/a0/a0b-results*.json
 AstfindKit/scripts/a0/feedback-candidates.tsv
 AstfindKit/scripts/a0/a0b-next-*.json
 
-# 发布产物（部署时临时写入 docs/updates）
+# 发布产物（部署时临时写入）
 docs/updates/
+docs/downloads/
+
+# README 本地预览（不入库）
+.readme-preview.html

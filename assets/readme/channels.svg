@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="300" viewBox="0 0 1200 300"
+     role="img" aria-labelledby="title desc">
+  <title id="title">一次查询，四条通道，一个结果列表</title>
+  <desc id="desc">查询「蓝鲸发布会」同时经过文件名、正文与 OCR、视频帧、画面语义四条通道，最后汇入一个按相关度混排的结果列表。</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#C7D2E2"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="300" rx="24" fill="#F6F7F9"/>
+  <rect x="0.5" y="0.5" width="1199" height="299" rx="23.5" fill="none" stroke="#E3E7ED"/>
+
+  <g id="query" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Arial, sans-serif">
+    <text x="56" y="48" font-size="16" fill="#596576">查询</text>
+    <rect x="56" y="64" width="220" height="64" rx="14" fill="#0E1520"/>
+    <text x="78" y="104" font-size="25" font-weight="600" fill="#FFFFFF">蓝鲸发布会</text>
+    <text x="250" y="104" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" text-anchor="end" fill="#A9B6C8">⌥⇧F</text>
+  </g>
+
+  <g id="connectors" fill="none" stroke="#C7D2E2" stroke-width="1.5">
+    <path d="M276 96 H320"/>
+    <path d="M320 86 V248"/>
+    <path d="M320 86 H360"/>
+    <path d="M320 140 H360"/>
+    <path d="M320 194 H360"/>
+    <path d="M320 248 H360"/>
+    <path d="M620 86 H660"/>
+    <path d="M620 140 H660"/>
+    <path d="M620 194 H660"/>
+    <path d="M620 248 H660"/>
+    <path d="M660 86 V248"/>
+    <path d="M660 167 H700" marker-end="url(#arrow)"/>
+  </g>
+
+  <g id="channels" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Arial, sans-serif">
+    <g id="channel-file">
+      <rect x="360" y="64" width="260" height="44" rx="10" fill="#FFFFFF" stroke="#E3E7ED"/>
+      <text x="376" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8A97A8">01</text>
+      <text x="410" y="92" font-size="19" font-weight="600" fill="#0E1520">文件名 · 多源</text>
+    </g>
+    <g id="channel-text">
+      <rect x="360" y="118" width="260" height="44" rx="10" fill="#FFFFFF" stroke="#E3E7ED"/>
+      <text x="376" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8A97A8">02</text>
+      <text x="410" y="146" font-size="19" font-weight="600" fill="#0E1520">正文 / OCR</text>
+    </g>
+    <g id="channel-video">
+      <rect x="360" y="172" width="260" height="44" rx="10" fill="#FFFFFF" stroke="#E3E7ED"/>
+      <text x="376" y="200" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8A97A8">03</text>
+      <text x="410" y="200" font-size="19" font-weight="600" fill="#0E1520">视频帧 · 时间码</text>
+    </g>
+    <g id="channel-semantic">
+      <rect x="360" y="226" width="260" height="44" rx="10" fill="#FFFFFF" stroke="#E3E7ED"/>
+      <text x="376" y="254" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#8A97A8">04</text>
+      <text x="410" y="254" font-size="19" font-weight="600" fill="#0E1520">画面语义 · 相似度</text>
+    </g>
+  </g>
+
+  <g id="result-board" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Arial, sans-serif">
+    <rect x="700" y="64" width="444" height="208" rx="14" fill="#FFFFFF" stroke="#D5DBE4"/>
+    <text x="724" y="96" font-size="20" font-weight="600" fill="#0E1520">一个结果列表</text>
+    <text x="1120" y="96" font-size="16" text-anchor="end" fill="#596576">16 项 · 12 ms</text>
+    <path d="M716 108 H1128" stroke="#E3E7ED"/>
+
+    <g id="result-file">
+      <rect x="716" y="120" width="44" height="20" rx="10" fill="#EDEFF3"/>
+      <text x="738" y="135" font-size="14" text-anchor="middle" fill="#4F5B6B">正文</text>
+      <text x="772" y="135" font-size="18" fill="#0E1520">蓝鲸发布会筹备.txt</text>
+      <text x="1120" y="135" font-size="15" text-anchor="end" fill="#596576">DemoSSD</text>
+    </g>
+    <g id="result-image">
+      <path d="M716 156 H1128" stroke="#E3E7ED"/>
+      <rect x="716" y="160" width="44" height="20" rx="10" fill="#EDEFF3"/>
+      <text x="738" y="175" font-size="14" text-anchor="middle" fill="#4F5B6B">OCR</text>
+      <text x="772" y="175" font-size="18" fill="#0E1520">蓝鲸发布会_主视觉.jpg</text>
+      <text x="1120" y="175" font-size="15" text-anchor="end" fill="#596576">DemoNAS</text>
+    </g>
+    <g id="result-video">
+      <path d="M716 196 H1128" stroke="#E3E7ED"/>
+      <rect x="716" y="200" width="44" height="20" rx="10" fill="#EDEFF3"/>
+      <text x="738" y="215" font-size="14" text-anchor="middle" fill="#4F5B6B">视频</text>
+      <text x="772" y="215" font-size="18" fill="#0E1520">蓝鲸发布会_开场.mp4</text>
+      <text x="1120" y="215" font-size="15" text-anchor="end" fill="#596576">@00:20</text>
+    </g>
+    <g id="result-semantic">
+      <path d="M716 236 H1128" stroke="#E3E7ED"/>
+      <rect x="716" y="240" width="44" height="20" rx="10" fill="#EDEFF3"/>
+      <text x="738" y="255" font-size="14" text-anchor="middle" fill="#4F5B6B">语义</text>
+      <text x="772" y="255" font-size="18" fill="#0E1520">蓝鲸发布会_主会场.jpg</text>
+      <text x="1120" y="255" font-size="15" text-anchor="end" fill="#596576">0.94</text>
+    </g>
+  </g>
+
+  <text x="56" y="286" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#596576">本机索引 · 来源离线仍可搜索 · 外发默认拒绝</text>
+</svg>

@@ -14,13 +14,18 @@ cd "$(dirname "$0")/../.."
 VERSION="${1:-}"
 if [ -n "$VERSION" ]; then
   ZIP="AstfindKit/build/Astfind-${VERSION}.zip"
+  DMG="AstfindKit/build/Astfind-${VERSION}.dmg"
+  DMG_SHA="${DMG}.sha256"
   MANIFEST="AstfindKit/build/latest.json"
   [ -f "$ZIP" ] || { echo "missing $ZIP" >&2; exit 1; }
+  [ -f "$DMG" ] || { echo "missing $DMG" >&2; exit 1; }
+  [ -f "$DMG_SHA" ] || { echo "missing $DMG_SHA" >&2; exit 1; }
   [ -f "$MANIFEST" ] || { echo "missing $MANIFEST" >&2; exit 1; }
-  mkdir -p docs/updates
+  mkdir -p docs/updates docs/downloads
   cp "$ZIP" docs/updates/
   cp "$MANIFEST" docs/updates/latest.json
-  echo "staged $ZIP + latest.json"
+  cp "$DMG" "$DMG_SHA" docs/downloads/
+  echo "staged $DMG + $ZIP + latest.json"
 fi
 
 npx --yes wrangler pages deploy docs --project-name astfind --branch main

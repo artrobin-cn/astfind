@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="420" viewBox="0 0 1200 420"
+     role="img" aria-labelledby="title desc">
+  <title id="title">Astfind：一个搜索框，搜遍文件名、正文和画面</title>
+  <desc id="desc">Astfind 是 macOS 本地优先的统一搜索。左侧是项目名称与一句话价值，右侧是一块搜索结果面板，展示文件名、正文、图片 OCR、视频帧和画面语义命中。</desc>
+
+  <rect width="1200" height="420" rx="28" fill="#F6F7F9"/>
+  <rect x="0.5" y="0.5" width="1199" height="419" rx="27.5" fill="none" stroke="#E3E7ED"/>
+
+  <g id="brand" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Arial, sans-serif">
+    <g id="app-icon">
+      <rect x="64" y="58" width="30" height="30" rx="8" fill="#BFD3FF"/>
+      <rect x="70" y="64" width="30" height="30" rx="8" fill="#7FA8FF"/>
+      <rect x="76" y="70" width="30" height="30" rx="8" fill="#2563EB"/>
+      <circle cx="96" cy="90" r="11" fill="none" stroke="#0E1520" stroke-width="4.5"/>
+      <path d="M104 98 L112 106" fill="none" stroke="#0E1520" stroke-width="4.5" stroke-linecap="round"/>
+    </g>
+    <text x="124" y="88" font-size="30" font-weight="600" letter-spacing="-0.5" fill="#0E1520">Astfind</text>
+    <text x="124" y="112" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#596576">macOS 14+ · Apple Silicon</text>
+    <text x="600" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" text-anchor="end" fill="#596576">v0.4.1</text>
+  </g>
+
+  <g id="title-block" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Arial, sans-serif">
+    <text x="64" y="174" font-size="40" font-weight="600" letter-spacing="-1" fill="#0E1520">一个搜索框，</text>
+    <text x="64" y="220" font-size="40" font-weight="600" letter-spacing="-1" fill="#0E1520">搜遍文件名、正文和画面。</text>
+    <text x="64" y="262" font-size="19" fill="#4F5B6B">本机、外置盘与 NAS 统一索引，来源离线仍可搜索。</text>
+    <text x="64" y="290" font-size="19" fill="#4F5B6B">OCR、视频帧与画面语义都在本地完成。</text>
+  </g>
+
+  <g id="meta-chips" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Arial, sans-serif">
+    <rect x="64" y="322" width="164" height="36" rx="18" fill="#FFFFFF" stroke="#D5DBE4"/>
+    <text x="146" y="346" font-size="16" text-anchor="middle" fill="#0E1520">⌥⇧F 全局呼出</text>
+    <rect x="240" y="322" width="224" height="36" rx="18" fill="#FFFFFF" stroke="#D5DBE4"/>
+    <text x="352" y="346" font-size="16" text-anchor="middle" fill="#0E1520">本机 / 外置盘 / NAS</text>
+    <rect x="476" y="322" width="112" height="36" rx="18" fill="#FFFFFF" stroke="#D5DBE4"/>
+    <text x="532" y="346" font-size="16" text-anchor="middle" fill="#0E1520">本地优先</text>
+  </g>
+
+  <g id="search-panel" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Arial, sans-serif">
+    <rect x="644" y="48" width="492" height="324" rx="18" fill="#FFFFFF" stroke="#D5DBE4"/>
+
+    <g id="search-header">
+      <circle cx="674" cy="80" r="7" fill="none" stroke="#596576" stroke-width="2"/>
+      <path d="M679 85 L685 91" fill="none" stroke="#596576" stroke-width="2" stroke-linecap="round"/>
+      <text x="696" y="86" font-size="24" font-weight="600" fill="#0E1520">蓝鲸发布会</text>
+      <rect x="1068" y="64" width="48" height="28" rx="6" fill="#F6F7F9" stroke="#E3E7ED"/>
+      <text x="1092" y="83" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" text-anchor="middle" fill="#596576">⌥⇧F</text>
+      <path d="M644 104 H1136" stroke="#E3E7ED"/>
+    </g>
+
+    <g id="result-rows">
+      <rect x="652" y="112" width="476" height="52" rx="10" fill="#EAF0FF"/>
+      <g id="row-file">
+        <rect x="664" y="125" width="20" height="24" rx="3" fill="#FFFFFF" stroke="#8A97A8" stroke-width="1.5"/>
+        <path d="M678 125 L684 131 L684 149 L664 149 L664 125 Z" fill="none" stroke="#8A97A8" stroke-width="1.5"/>
+        <text x="700" y="136" font-size="20" font-weight="600" fill="#0E1520">蓝鲸发布会筹备.txt</text>
+        <text x="700" y="156" font-size="18" fill="#596576">正文命中 · DemoSSD / 发布会</text>
+        <rect x="1080" y="124" width="48" height="26" rx="13" fill="#FFFFFF"/>
+        <text x="1104" y="142" font-size="16" text-anchor="middle" fill="#2563EB">正文</text>
+      </g>
+
+      <g id="row-image">
+        <rect x="664" y="177" width="22" height="20" rx="3" fill="#EAF0FF" stroke="#8A97A8" stroke-width="1.5"/>
+        <circle cx="671" cy="184" r="2" fill="#2563EB"/>
+        <path d="M665 195 L673 188 L679 194 L683 191 L685 193 L685 197 L665 197 Z" fill="#2563EB"/>
+        <text x="700" y="188" font-size="20" font-weight="600" fill="#0E1520">蓝鲸发布会_主视觉.jpg</text>
+        <text x="700" y="208" font-size="18" fill="#596576">图片 OCR · DemoNAS</text>
+        <rect x="1080" y="176" width="48" height="26" rx="13" fill="#EDEFF3"/>
+        <text x="1104" y="194" font-size="15" text-anchor="middle" fill="#4F5B6B">OCR</text>
+      </g>
+
+      <g id="row-video">
+        <rect x="664" y="229" width="24" height="18" rx="3" fill="#FFFFFF" stroke="#8A97A8" stroke-width="1.5"/>
+        <path d="M673 233 L679 238 L673 243 Z" fill="#2563EB"/>
+        <text x="700" y="240" font-size="20" font-weight="600" fill="#0E1520">蓝鲸发布会_开场.mp4</text>
+        <text x="700" y="260" font-size="18" fill="#596576">视频帧 @00:20 · DemoSSD</text>
+        <rect x="1080" y="228" width="48" height="26" rx="13" fill="#EDEFF3"/>
+        <text x="1104" y="246" font-size="15" text-anchor="middle" fill="#4F5B6B">视频</text>
+      </g>
+
+      <g id="row-semantic">
+        <rect x="664" y="281" width="22" height="20" rx="3" fill="#EAF0FF" stroke="#8A97A8" stroke-width="1.5"/>
+        <circle cx="671" cy="288" r="2" fill="#2563EB"/>
+        <path d="M665 299 L673 292 L679 298 L683 295 L685 297 L685 301 L665 301 Z" fill="#2563EB"/>
+        <text x="700" y="292" font-size="20" font-weight="600" fill="#0E1520">蓝鲸发布会_主会场.jpg</text>
+        <text x="700" y="312" font-size="18" fill="#596576">画面语义 · 相似度 0.94</text>
+        <rect x="1080" y="280" width="48" height="26" rx="13" fill="#EDEFF3"/>
+        <text x="1104" y="298" font-size="15" text-anchor="middle" fill="#4F5B6B">语义</text>
+      </g>
+    </g>
+
+    <g id="panel-footer">
+      <path d="M652 320 H1128" stroke="#E3E7ED"/>
+      <circle cx="664" cy="340" r="3" fill="#2563EB"/>
+      <text x="676" y="346" font-size="16" fill="#596576">DemoNAS 离线 · 索引仍可搜索</text>
+      <text x="1128" y="346" font-size="16" text-anchor="end" fill="#596576">16 项 · 12 ms</text>
+    </g>
+  </g>
+</svg>

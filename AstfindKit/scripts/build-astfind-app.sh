@@ -161,4 +161,5 @@ echo "== [5/5] update zip =="
 ditto -c -k --sequesterRsrc --keepParent "$APP" "build/Astfind-${VERSION}.zip"
 echo "OK: $(pwd)/build/Astfind-${VERSION}.dmg"
 echo "OK: $(pwd)/build/Astfind-${VERSION}.zip"
-shasum -a 256 "build/Astfind-${VERSION}.dmg" "build/Astfind-${VERSION}.zip"
+(cd build && shasum -a 256 "Astfind-${VERSION}.dmg" > "Astfind-${VERSION}.dmg.sha256" && shasum -a 256 "Astfind-${VERSION}.zip" > "Astfind-${VERSION}.zip.sha256")
+cat "build/Astfind-${VERSION}.dmg.sha256" "build/Astfind-${VERSION}.zip.sha256"

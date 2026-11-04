@@ -77,7 +77,7 @@ curl -I https://astfind.robyn.top/sitemap.xml
 - 桌面 1440、移动 390 打开首页；
 - Hero、场景 Tab、People 示意、下载按钮；
 - 无 404 资源、无横向滚动；
-- 如果下载按钮仍指向 GitHub Releases，确认 Release 资产已上传；
+- 确认 `https://astfind.robyn.top/downloads/Astfind-<version>.dmg` 返回 200，SHA-256 与 GitHub Release 资产一致；GitHub Releases 保留为国际镜像；
 - 应用内更新检查 `https://astfind.robyn.top/updates/latest.json` 返回 200，zip 大小与 SHA-256 与清单一致。
 
 ## 六、后续更新
@@ -94,7 +94,7 @@ curl -I https://astfind.robyn.top/sitemap.xml
 ./AstfindKit/scripts/deploy-site.sh 0.4.1
 ```
 
-脚本会把 `AstfindKit/build/Astfind-<version>.zip` 与 `latest.json` 复制到 `docs/updates/` 再上传；该目录是本地产物，不入库。
+脚本会把 `AstfindKit/build/Astfind-<version>.dmg`（及 `.sha256`）复制到 `docs/downloads/`，把更新 zip 与 `latest.json` 复制到 `docs/updates/`，再上传；这两个目录是本地产物，不入库。
 
 应用内更新固定读取：
 
