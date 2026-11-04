@@ -55,10 +55,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, Finder
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { NSApp.terminate(nil) }
             return
         }
-        // ADR-121: 上游更新器已禁用（Astfind 走自建渠道，B1 接线；未配置 AstfindUpdateFeedURL
-        // 前 UpdateManager 零网络，设置页/菜单更新入口隐藏——绝不请求上游 find.oiloil.org appcast）
-        // UpdateManager.shared.start()
-        // UpdateManager.shared.onChange = { [weak self] in self?.refreshUpdateMenu() }
+        // ADR-121: 上游更新器已禁用（Astfind 走自建渠道，0.4.1 起启用；未配置
+        // AstfindUpdateFeedURL 时 UpdateManager 零网络，设置页/菜单更新入口隐藏——
+        // 绝不请求上游 find.oiloil.org appcast）
+        UpdateManager.shared.start()
+        UpdateManager.shared.onChange = { [weak self] in self?.refreshUpdateMenu() }
         NSApp.setActivationPolicy(.accessory)
         // Finder → 服务/快速操作 → 在 Astfind 中找相似（NSServices 入口）。
         DistributedNotificationCenter.default().addObserver(self, selector: #selector(reopenRequested(_:)), name: Self.showRequest, object: nil)

@@ -1,22 +1,24 @@
 #!/bin/bash
-# Astfind .app 打包（R1a）：release 构建 → bundle 组装 → adhoc 签名 → DMG。
+# Astfind .app 打包：构建 → bundle 组装 → 稳定证书签名 → DMG + 应用内更新 zip。
 # 正式 Developer ID 签名/公证归 R1（需证书；本脚本产出可分发测试的内测包）。
 set -euo pipefail
 cd "$(dirname "$0")/.."
-VERSION="${ASTFIND_VERSION:-0.4.0}"
+VERSION="${ASTFIND_VERSION:-0.4.1}"
+WEBSITE_URL="${ASTFIND_WEBSITE_URL:-https://astfind.robyn.top/}"
+UPDATE_FEED="${ASTFIND_UPDATE_FEED_URL:-}"
+CONFIGURATION="${ASTFIND_CONFIGURATION:-release}"
 # CFBundleVersion 必须是整数：更新器用 Int 解析它，并与清单里的 build 做“必须相等”的校验。
-# 默认由语义版本派生（0.4.0 → 400）；发布流水线可用 ASTFIND_BUILD 覆盖，
+# 默认由语义版本派生（0.4.1 → 401）；发布流水线可用 ASTFIND_BUILD 覆盖，
 # 但 latest.json 的 build 必须与这里写入的值一致，否则安装会（安全地）拒绝。
 BUILD="${ASTFIND_BUILD:-$(printf '%s' "$VERSION" | awk -F. '{printf "%d", ($1+0)*10000 + ($2+0)*100 + ($3+0)}')}"
-CONFIGURATION=release
 APP="build/Astfind.app"
 DIST="build/dist"
 
-echo "== [1/4] release build =="
+echo "== [1/5] build ($CONFIGURATION) =="
 swift build -c "$CONFIGURATION"
 BIN_DIR="$(swift build -c "$CONFIGURATION" --show-bin-path)"
 
-echo "== [2/4] assemble .app =="
+echo "== [2/5] assemble .app =="
 rm -rf "$APP" "$DIST"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$DIST"
 cp "$BIN_DIR/Astfind" "$APP/Contents/MacOS/Astfind"
@@ -131,6 +133,11 @@ cat > "$APP/Contents/Info.plist" <<PLIST
 </plist>
 PLIST
 
+/usr/libexec/PlistBuddy -c "Add :AstfindWebsiteURL string ${WEBSITE_URL}" "$APP/Contents/Info.plist"
+if [ -n "$UPDATE_FEED" ]; then
+  /usr/libexec/PlistBuddy -c "Add :AstfindUpdateFeedURL string ${UPDATE_FEED}" "$APP/Contents/Info.plist"
+fi
+
 # 签名策略（2026-10-22，FDA 跨版本保留）：优先环境变量 ASTFIND_SIGN_IDENTITY（未来
 # Developer ID 直接切），其次本机自签证书 "Astfind Local Signing"（身份锚定在证书，
 # 跨版本稳定 → TCC 完全磁盘访问等授权不丢；adhoc 的身份=单次构建哈希，每次打包都变）。
@@ -139,12 +146,19 @@ SIGN_IDENTITY="${ASTFIND_SIGN_IDENTITY:-}"
 if [ -z "$SIGN_IDENTITY" ] && security find-identity -v -p codesigning 2>/dev/null | /usr/bin/grep -q "Astfind Local Signing"; then
   SIGN_IDENTITY="Astfind Local Signing"
 fi
-echo "== [3/4] codesign ($([ -n "$SIGN_IDENTITY" ] && echo "identity: $SIGN_IDENTITY" || echo "adhoc 回退")) =="
+echo "== [3/5] codesign ($([ -n "$SIGN_IDENTITY" ] && echo "identity: $SIGN_IDENTITY" || echo "adhoc 回退")) =="
 codesign --force --sign "${SIGN_IDENTITY:--}" --identifier edu.astfind.app "$APP"
 codesign --verify --verbose=1 "$APP" 2>&1 | tail -1
 
-echo "== [4/4] DMG =="
+echo "== [4/5] DMG =="
 cp -R "$APP" "$DIST/"
 ln -s /Applications "$DIST/Applications"
 hdiutil create -volname "Astfind" -srcfolder "$DIST" -ov -format UDZO "build/Astfind-${VERSION}.dmg" -quiet
+
+echo "== [5/5] update zip =="
+# 应用内更新使用 zip（清单与 zip 同源 HTTPS）。zip 根目录必须只有 Astfind.app；
+# 安装器会拒绝绝对路径、..、反斜杠、符号链接以及根目录之外的条目。
+ditto -c -k --sequesterRsrc --keepParent "$APP" "build/Astfind-${VERSION}.zip"
 echo "OK: $(pwd)/build/Astfind-${VERSION}.dmg"
+echo "OK: $(pwd)/build/Astfind-${VERSION}.zip"
+shasum -a 256 "build/Astfind-${VERSION}.dmg" "build/Astfind-${VERSION}.zip"

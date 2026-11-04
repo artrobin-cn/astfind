@@ -77,12 +77,39 @@ curl -I https://astfind.robyn.top/sitemap.xml
 - 桌面 1440、移动 390 打开首页；
 - Hero、场景 Tab、People 示意、下载按钮；
 - 无 404 资源、无横向滚动；
-- 如果下载按钮仍指向 GitHub Releases，确认 Release 资产已上传；Cloudflare Pages 只负责官网，不负责 DMG 分发。
+- 如果下载按钮仍指向 GitHub Releases，确认 Release 资产已上传；
+- 应用内更新检查 `https://astfind.robyn.top/updates/latest.json` 返回 200，zip 大小与 SHA-256 与清单一致。
 
 ## 六、后续更新
 
+只更新官网：
+
 ```bash
-npx wrangler pages deploy docs --project-name astfind --branch main
+./AstfindKit/scripts/deploy-site.sh
+```
+
+同时发布应用内更新（DMG/zip 已构建，`AstfindKit/build/latest.json` 已生成）：
+
+```bash
+./AstfindKit/scripts/deploy-site.sh 0.4.1
+```
+
+脚本会把 `AstfindKit/build/Astfind-<version>.zip` 与 `latest.json` 复制到 `docs/updates/` 再上传；该目录是本地产物，不入库。
+
+应用内更新固定读取：
+
+```text
+https://astfind.robyn.top/updates/latest.json
+```
+
+清单里的 `url` 必须与清单同 HTTPS 主机，且 `size`、`sha256`、`version`、`build` 必须与 zip 和 App 完全一致。生成清单：
+
+```bash
+node AstfindKit/scripts/make-update-manifest.mjs \
+  --zip AstfindKit/build/Astfind-0.4.1.zip \
+  --version 0.4.1 --build 401 --published 2026-11-05 \
+  --notes docs/releases/v0.4.1.notes.json \
+  --output AstfindKit/build/latest.json
 ```
 
 每次改 `docs/` 后重新部署即可。HTML 里 CSS/JS/图片已经带版本 query，静态资源可以放心缓存。

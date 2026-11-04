@@ -6,13 +6,13 @@
 >
 > 设计规范：[DESIGN.md](DESIGN.md)。页面、组件、CSS 与交互以此为准。部署步骤见 [docs/deploy-cloudflare.md](docs/deploy-cloudflare.md)。
 
-[![swift](https://img.shields.io/badge/swift-5.10%2B-orange)]() [![macOS](https://img.shields.io/badge/macOS-14%2B-blue)]() [![tests](https://img.shields.io/badge/tests-269%2F269-green)]() [![version](https://img.shields.io/badge/version-0.4.0-purple)]() [![license](https://img.shields.io/badge/license-Apache--2.0%20%2B%20MIT-blue)]()
+[![swift](https://img.shields.io/badge/swift-5.10%2B-orange)]() [![macOS](https://img.shields.io/badge/macOS-14%2B-blue)]() [![tests](https://img.shields.io/badge/tests-269%2F269-green)]() [![version](https://img.shields.io/badge/version-0.4.1-purple)]() [![license](https://img.shields.io/badge/license-Apache--2.0%20%2B%20MIT-blue)]()
 
-> **v0.4.0（2026-11-03）**：新增人物检索（图片/视频关键帧、多脸选择、目录/全来源范围、召回阈值）、交互优先后台索引、按来源内容索引范围与任务去重。发布说明见 [docs/releases/v0.4.0.md](docs/releases/v0.4.0.md)。
+> **v0.4.1（2026-11-05）**：新增应用内自动更新（HTTPS 同源清单、SHA-256 与代码签名校验、失败回滚）。0.4.0 的人物检索与交互优化见 [docs/releases/v0.4.0.md](docs/releases/v0.4.0.md)，本版发布说明见 [docs/releases/v0.4.1.md](docs/releases/v0.4.1.md)。
 
 ## 效果一览
 
-以下为 0.4.0 真实面板（⌥⇧F）截图，演示素材来自两个本地演示来源 **DemoSSD / DemoNAS**；均为虚构素材，不含真实个人路径或真实人脸：
+以下为 0.4.x 真实面板（0.4.0 截图，⌥⇧F），演示素材来自两个本地演示来源 **DemoSSD / DemoNAS**；均为虚构素材，不含真实个人路径或真实人脸：
 
 **统一搜索**——「蓝鲸发布会」：正文、图片与视频命中混排；图片行带缩略图，视频行带来源路径：
 
@@ -173,7 +173,7 @@
 
 ### 安装（Apple Silicon）
 
-- **DMG**：从 [Releases](https://github.com/artrobin-cn/astfind/releases) 下载，拖入「应用程序」。未公证，首次打开需在「系统设置 → 隐私与安全性」放行。
+- **DMG**：从 [Releases](https://github.com/artrobin-cn/astfind/releases) 下载，拖入「应用程序」。0.4.1 起支持应用内检查更新。未公证，首次打开需在「系统设置 → 隐私与安全性」放行。
 - **npm**（Node.js 18+）：`npm install -g astfind && astfind`。装到 `~/Applications`，无需 sudo；安装前校验 SHA-256、bundle ID、arm64 与代码签名完整性。
 - **Homebrew**：`brew install --cask artrobin-cn/astfind/astfind`（tap：[homebrew-astfind](https://github.com/artrobin-cn/homebrew-astfind)）。
 
@@ -183,7 +183,7 @@
 # 构建（269/269 测试）
 cd AstfindKit
 swift test
-./scripts/build-astfind-app.sh        # → build/Astfind-0.4.0.dmg
+./scripts/build-astfind-app.sh        # → build/Astfind-0.4.1.dmg + .zip
 
 # CLI（来源管理与无头验证）
 .build/debug/astfind-sources add /Volumes/SSD --name 素材盘
@@ -200,7 +200,7 @@ swift test
 
 OCR/文本抽取**全部本地推理**。
 
-全局呼出快捷键默认 **⌥⇧F**（与上游 Oil Find 的 ⇧⌘F 错开，避免与官方 App 同时弹面板；设置页可改）。**本 App 不访问上游 oil-find 的更新源**：自动更新渠道在路线图中，接线前不发起任何版本检查请求。
+全局呼出快捷键默认 **⌥⇧F**（与上游 Oil Find 的 ⇧⌘F 错开，避免与官方 App 同时弹面板；设置页可改）。**应用内更新只访问自建 HTTPS 源**：0.4.1 起可在菜单栏或设置页检查更新；未配置更新源时零网络请求，绝不访问上游 oil-find 的更新地址。
 
 ## 模型下载与配置（可选）
 
@@ -258,7 +258,7 @@ OCR/文本抽取**全部本地推理**。
 - A0-b 本地模型：WeMM-2B 612 图真值 rank1 11/11、MRR 1.0（反超远程 WeMM-9B），本地 1.06s/图、零外发；EmbeddingGemma 2 为轻量备选
 - 视频语义采样密度自适应（画面变化检测）
 - **人物检索 / 找人（实验功能）**：本机 Vision + `buffalo_sc` CoreML 人脸向量，按参考照片找图片/视频帧；合影多脸选择、视频时间码、来源级开关与隐私删除。权重为非商用研究许可，对外发布前需替换/授权；评测管线支持按 profile 接入其他识别模型。详见 [docs/person-search-design.md](docs/person-search-design.md) 与 [模型下载与配置](docs/model-setup.md)
-- Developer ID 签名与公证、自动更新（appcast）
+- Developer ID 签名与公证；自动更新已在 0.4.1 接通（自建 HTTPS 清单），后续补充公证与增量更新
 
 ---
 

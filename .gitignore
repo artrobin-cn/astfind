@@ -26,3 +26,6 @@ AstfindKit/scripts/a0/a0-results.json
 AstfindKit/scripts/a0/a0b-results*.json
 AstfindKit/scripts/a0/feedback-candidates.tsv
 AstfindKit/scripts/a0/a0b-next-*.json
+
+# 发布产物（部署时临时写入 docs/updates）
+docs/updates/

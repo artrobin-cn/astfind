@@ -154,7 +154,10 @@ public struct SystemUpdateFiles: UpdateFileOperations {
     public func remove(_ url: URL) throws { try fm.removeItem(at: url) }
     public func writeReceipt(_ installation: UpdateInstallation, manifest: UpdateManifest) throws {
         let previous = try version(of: installation.target)
-        let receipt = Receipt(target: installation.target.path, version: manifest.version, build: manifest.build,
+        // Normalize /var → /private/var and other symlinked install paths so the
+        // relaunched app can match its own Bundle.main.bundleURL against this receipt.
+        let receipt = Receipt(target: installation.target.resolvingSymlinksInPath().path,
+                              version: manifest.version, build: manifest.build,
                               previousVersion: previous.version.text, previousBuild: previous.build)
         try JSONEncoder().encode(receipt).write(to: installation.workspace.appendingPathComponent("receipt.json"), options: .atomic)
     }
@@ -163,6 +166,7 @@ public struct SystemUpdateFiles: UpdateFileOperations {
         let previousVersion: String; let previousBuild: Int
     }
     public func registerLaunch(application: URL, current: UpdateVersion) {
+        let application = application.resolvingSymlinksInPath()
         let parent = application.deletingLastPathComponent()
         guard let directories = try? fm.contentsOfDirectory(at: parent, includingPropertiesForKeys: [.isSymbolicLinkKey]) else { return }
         for directory in directories where directory.lastPathComponent.hasPrefix(".oilfind-update-") {
@@ -174,6 +178,7 @@ public struct SystemUpdateFiles: UpdateFileOperations {
         }
     }
     @discardableResult public func cleanupAfterLaunch(application: URL, current: UpdateVersion) -> UpdateFailure? {
+        let application = application.resolvingSymlinksInPath()
         let parent = application.deletingLastPathComponent()
         var failure: UpdateFailure?
         guard let directories = try? fm.contentsOfDirectory(at: parent, includingPropertiesForKeys: [.isSymbolicLinkKey, .isDirectoryKey]) else { return nil }
