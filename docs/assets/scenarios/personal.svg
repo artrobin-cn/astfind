@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="个人照片与移动硬盘归档">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#faf8f4"/><stop offset="1" stop-color="#eef1f5"/></linearGradient>
+    <linearGradient id="photoA" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#91b7e8"/><stop offset="1" stop-color="#d8e5f5"/></linearGradient>
+    <linearGradient id="photoB" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9d7b8"/><stop offset="1" stop-color="#f4ecdf"/></linearGradient>
+    <linearGradient id="photoC" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9cc7bd"/><stop offset="1" stop-color="#dfefea"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#0e1520" flood-opacity=".16"/></filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect x="70" y="610" width="1060" height="3" rx="1.5" fill="#d9dee6"/>
+  <g transform="translate(118 146) rotate(-5)" filter="url(#shadow)">
+    <rect width="340" height="250" rx="8" fill="#fff"/>
+    <rect x="14" y="14" width="312" height="204" rx="4" fill="url(#photoA)"/>
+    <path d="M14 156 L80 110 L148 148 L226 92 L326 152 V218 H14Z" fill="#4e7fb8" opacity=".55"/>
+    <circle cx="88" cy="64" r="26" fill="#f4f0e8" opacity=".9"/>
+    <rect x="14" y="230" width="90" height="6" rx="3" fill="#e3e7ed"/>
+  </g>
+  <g transform="translate(420 128) rotate(3)" filter="url(#shadow)">
+    <rect width="340" height="250" rx="8" fill="#fff"/>
+    <rect x="14" y="14" width="312" height="204" rx="4" fill="url(#photoB)"/>
+    <path d="M14 160 L96 110 L170 152 L250 98 L326 146 V218 H14Z" fill="#c9a776" opacity=".5"/>
+    <circle cx="90" cy="66" r="25" fill="#fff8e9" opacity=".92"/>
+    <rect x="14" y="230" width="112" height="6" rx="3" fill="#e3e7ed"/>
+  </g>
+  <g transform="translate(722 168) rotate(-2)" filter="url(#shadow)">
+    <rect width="300" height="226" rx="8" fill="#fff"/>
+    <rect x="14" y="14" width="272" height="180" rx="4" fill="url(#photoC)"/>
+    <path d="M14 142 L72 104 L140 136 L206 90 L286 128 V194 H14Z" fill="#5f9a8d" opacity=".5"/>
+    <circle cx="82" cy="58" r="22" fill="#f7fbf9" opacity=".9"/>
+    <rect x="14" y="206" width="84" height="6" rx="3" fill="#e3e7ed"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="846" y="464" width="270" height="94" rx="16" fill="#fff"/>
+    <rect x="866" y="486" width="80" height="50" rx="7" fill="#eaf0ff"/>
+    <circle cx="886" cy="502" r="7" fill="#2563eb" opacity=".45"/>
+    <rect x="904" y="498" width="28" height="5" rx="2.5" fill="#c7d6f3"/>
+    <rect x="966" y="490" width="128" height="7" rx="3.5" fill="#d5dbe4"/>
+    <rect x="966" y="507" width="94" height="7" rx="3.5" fill="#eef1f5"/>
+    <rect x="966" y="524" width="110" height="7" rx="3.5" fill="#eef1f5"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="952" y="588" width="168" height="58" rx="12" fill="#fff"/>
+    <circle cx="978" cy="617" r="10" fill="#f1eee6"/>
+    <rect x="998" y="606" width="92" height="7" rx="3.5" fill="#ded9ce"/>
+    <rect x="998" y="622" width="64" height="7" rx="3.5" fill="#e9e5dc"/>
+  </g>
+  <g transform="translate(112 512) rotate(2)" filter="url(#shadow)">
+    <rect width="240" height="150" rx="10" fill="#fff"/>
+    <rect x="16" y="16" width="208" height="90" rx="4" fill="#f1eee6"/>
+    <rect x="32" y="32" width="84" height="7" rx="3.5" fill="#cbc6b9"/><rect x="32" y="50" width="142" height="7" rx="3.5" fill="#ded9ce"/><rect x="32" y="68" width="104" height="7" rx="3.5" fill="#e7e3da"/>
+    <rect x="16" y="124" width="80" height="6" rx="3" fill="#e3e7ed"/>
+  </g>
+  <g transform="translate(380 560) rotate(-4)" filter="url(#shadow)">
+    <rect width="210" height="120" rx="10" fill="#fff"/>
+    <rect x="14" y="14" width="182" height="66" rx="4" fill="#eaf0ff"/>
+    <rect x="30" y="30" width="68" height="7" rx="3.5" fill="#9fb8e8"/><rect x="30" y="48" width="112" height="7" rx="3.5" fill="#c7d6f3"/>
+    <rect x="14" y="96" width="62" height="6" rx="3" fill="#e3e7ed"/>
+  </g>
+</svg>

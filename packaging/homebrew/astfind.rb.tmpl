@@ -1,0 +1,19 @@
+cask "astfind" do
+  version "{{VERSION}}"
+  sha256 "{{SHA256}}"
+
+  url "{{URL}}"
+  name "Astfind"
+  desc "Local-first unified file and content search"
+  homepage "{{HOMEPAGE}}"
+
+  app "Astfind.app"
+
+  depends_on arch: :arm64
+
+  zap trash: [
+    "~/Library/Application Support/Astfind",
+    "~/Library/Caches/Astfind",
+    "~/Library/Preferences/edu.astfind.app.plist",
+  ]
+end

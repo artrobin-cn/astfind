@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "benchmark": "A0-b-local-multimodal-embedding",
+  "date": "2026-10-23",
+  "hardware": "Apple M4 / 16GB / macOS 26.4",
+  "queries": {
+    "file": "AstfindKit/scripts/a0/a0-queries-zh.tsv",
+    "total": 36,
+    "gt": 12,
+    "generic": 16,
+    "nonsense": 8,
+    "gt_image_eligible": 11,
+    "note": "one video-only truth query excluded from image-only aggregates"
+  },
+  "sample": {
+    "subsets": [174, 612],
+    "sources": 3,
+    "source_description": "two NAS directories + one external SSD",
+    "demo_images": 12,
+    "image_max_edge_px": 512,
+    "paired_with_wemm_9b_vectors": true
+  },
+  "models": [
+    {
+      "id": "tencent/WeMM-Embedding-2B",
+      "params": "2B",
+      "dim": 2048,
+      "weights_gb": 5.2,
+      "runtime": "local MPS float16, transformers 5.2.0",
+      "sample_174": {"hit1": "11/11", "hit5": "11/11", "hit10": "11/11", "mrr": 1.0},
+      "sample_612": {"hit1": "11/11", "hit5": "11/11", "hit10": "11/11", "mrr": 1.0},
+      "image_ms": 1057.6,
+      "text_ms": 124.7,
+      "peak_mb": 4755,
+      "recommended_floor": 0.42,
+      "floor_result": {"negative_leaks": "0/8", "truth_retained": "11/11"},
+      "hub_gini": 0.338,
+      "generic_top1_same_as_baseline": "6/16",
+      "egress": false
+    },
+    {
+      "id": "wemm-9b-remote",
+      "params": "9B",
+      "dim": 4096,
+      "runtime": "remote OpenAI-compatible endpoint",
+      "sample_612": {"hit1": "10/11", "hit5": "11/11", "hit10": "11/11", "mrr": 0.9545},
+      "image_ms": 700,
+      "text_ms": 270,
+      "recommended_floor": 0.5,
+      "hub_gini": 0.372,
+      "egress": true
+    },
+    {
+      "id": "google/embeddinggemma-2",
+      "params": "0.74B",
+      "dim": 768,
+      "weights_gb": 1.4,
+      "runtime": "local MPS float32, transformers 5.20.2",
+      "sample_174": {"hit1": "7/11", "hit5": "11/11", "hit10": "11/11", "mrr": 0.8182},
+      "image_ms": 988.5,
+      "text_ms": 16.7,
+      "peak_mb": 2945,
+      "recommended_floor": 0.7,
+      "floor_result": {"negative_leaks": "0/8", "truth_retained": "10/11"},
+      "hub_gini": 0.493,
+      "egress": false
+    },
+    {
+      "id": "OFA-Sys/chinese-clip-vit-base-patch16",
+      "params": "188M",
+      "dim": 512,
+      "runtime": "local CPU, transformers 4.46.3",
+      "sample_note": "reference run on a different 612-image sample (2 sources)",
+      "sample_612": {"hit1": "5/11", "hit5": "10/11", "hit10": "10/11", "mrr": 0.636},
+      "image_ms": 39.5,
+      "text_ms": 31,
+      "peak_mb": 2242,
+      "recommended_floor": 0.41,
+      "hub_gini": 0.374,
+      "egress": false
+    }
+  ],
+  "decision": {
+    "remote_default_unchanged": true,
+    "local_default": false,
+    "preferred_local_backup": "tencent/WeMM-Embedding-2B",
+    "notes": [
+      "WeMM-2B quality matched or exceeded the remote 9B baseline on the paired domain sample.",
+      "Local throughput is comparable to the current remote pump, not a large speedup; value is quality, zero egress and no remote dependency.",
+      "No product code or default provider was changed by this benchmark.",
+      "Full per-hit results contain real paths and are kept local; this file contains aggregates only."
+    ]
+  }
+}

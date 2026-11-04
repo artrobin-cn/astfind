@@ -1,0 +1,24 @@
+Astfind
+Copyright 2026 Astfind
+
+This product includes software developed by Lin Zhihuang (Oil Find),
+licensed under the MIT License. See oil-find/LICENSE.
+
+AstfindKit/Sources/AstfindPanel is a fork of Oil Find.
+
+Only the OilFindCore/COilFind source subset is included in oil-find/.
+The upstream app, website, Pro pages, payment/licensing services, assets,
+scripts and tests are not distributed.
+
+The Astfind core search/index engine (AstfindEngine, SQLite, SourceRegistry,
+ScanScheduler, SourceSession, VolumeIdentity) is licensed under MIT.
+
+Model weights are not included in this repository. Model cards:
+- Tencent WeMM-Embedding-2B / WeMM-Embedding-9B: Apache-2.0
+- Google EmbeddingGemma 2: Apache-2.0
+- OFA-Sys Chinese-CLIP: see its model card
+- InsightFace buffalo_l / buffalo_sc: code MIT; model weights and training data
+  are non-commercial research only. The weights are not distributed with this
+  repository. See docs/superpowers/reports/2026-11-01-m08a-license-review.md.
+
+Demo screenshots use synthetic content with desensitized paths.

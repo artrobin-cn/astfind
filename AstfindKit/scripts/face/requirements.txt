@@ -1,0 +1,6 @@
+coremltools==5.2.0
+numpy==1.23.5
+onnx==1.16.1
+onnxruntime==1.19.2
+opencv-python-headless==4.10.0.84
+protobuf==3.20.3

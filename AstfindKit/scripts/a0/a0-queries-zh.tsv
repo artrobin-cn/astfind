@@ -1,0 +1,37 @@
+查询	类别	期望命中(路径包含,|分隔)
+蓝鲸发布会	gt	蓝鲸发布会
+深空蓝发布会主视觉	gt	主视觉
+发布会签到处	gt	签到处
+发布会主会场	gt	主会场
+发布会嘉宾席	gt	嘉宾席
+舞台灯光演示视频	gt	舞台灯光
+会议幻灯片	gt	幻灯
+数据图表	gt	数据图表|数据页
+红色舞台海报	gt	红色舞台海报
+舞台剧宣传图	gt	舞台剧
+发布会邀请函	gt	邀请函
+会议白板	gt	白板
+讲台上的一位老师	generic
+海边日落	generic
+会议现场	generic
+电脑屏幕截图	generic
+二维码	generic
+微信聊天截图	generic
+白板上的字	generic
+幻灯片课件	generic
+手写笔记	generic
+获奖证书	generic
+汽车	generic
+高楼建筑	generic
+一盘菜	generic
+猫	generic
+山峰风景	generic
+沙滩上的人	generic
+紫色独角兽在火星上打印文件	nonsense
+会飞的蓝色大象骑自行车	nonsense
+三条腿的钢琴在海里游泳	nonsense
+用香蕉打电话的恐龙	nonsense
+黑白色的圆周率纪念碑	nonsense
+在月球上开的地铁	nonsense
+由玻璃做的烤面包机	nonsense
+一只戴眼镜的章鱼在写作业	nonsense

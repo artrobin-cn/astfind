@@ -1,0 +1,28 @@
+# 构建产物
+.build/
+build/
+*.dmg
+DerivedData/
+*.o
+*.lock
+
+# 系统杂物
+.DS_Store
+._*
+
+# 本地设计/演示素材（不入库）
+.oil-ui/
+vibe_images/
+
+# 本地 Python / 评测环境
+.venv/
+.benchmark/
+__pycache__/
+*.pyc
+.swiftpm/
+
+# A0 基准结果含真实路径，只留本地
+AstfindKit/scripts/a0/a0-results.json
+AstfindKit/scripts/a0/a0b-results*.json
+AstfindKit/scripts/a0/feedback-candidates.tsv
+AstfindKit/scripts/a0/a0b-next-*.json
