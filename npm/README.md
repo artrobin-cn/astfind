@@ -56,6 +56,13 @@ npm publish AstfindKit/build/npm/artifacts/astfind-darwin-arm64-<version>.tgz --
 npm publish AstfindKit/build/npm/artifacts/astfind-<version>.tgz --access public
 ```
 
+也可以一条命令完成发布、版本查询和安装 smoke test：
+
+```bash
+./npm/scripts/publish.sh              # 已配置 bypass-2FA token
+./npm/scripts/publish.sh 123456      # 临时传 6 位 OTP
+```
+
 - `@astfind` scope 需要先在 npm 建好并归账号所有；平台包必须带 `--access public`。
 - 建议在 GitHub Actions 里用 OIDC 发布并加 `--provenance`（`id-token: write`）；本地 `npm publish --provenance` 不可用。
 - 账号开 2FA。发布脚本的 postinstall 本身就是执行通道，账号被盗等于供应链失守。

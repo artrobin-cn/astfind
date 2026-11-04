@@ -174,7 +174,7 @@
 ### 安装（Apple Silicon）
 
 - **DMG**：从 [Releases](https://github.com/artrobin-cn/astfind/releases) 下载，拖入「应用程序」。0.4.1 起支持应用内检查更新。未公证，首次打开需在「系统设置 → 隐私与安全性」放行。
-- **npm**（Node.js 18+）：`npm install -g astfind && astfind`。装到 `~/Applications`，无需 sudo；安装前校验 SHA-256、bundle ID、arm64 与代码签名完整性。
+- **npm**（发布中，暂不可用）：包发布后使用 `npm install -g astfind && astfind`。装到 `~/Applications`，无需 sudo；安装前校验 SHA-256、bundle ID、arm64 与代码签名完整性。
 - **Homebrew**：`brew install --cask artrobin-cn/astfind/astfind`（tap：[homebrew-astfind](https://github.com/artrobin-cn/homebrew-astfind)）。
 
 ### 从源码

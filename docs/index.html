@@ -440,13 +440,16 @@
           <p class="note">0.4.1 起支持应用内检查更新。未公证：首次打开需在「系统设置 → 隐私与安全性」放行。</p>
         </div>
         <div class="install-card">
-          <h3>npm</h3>
+          <h3>npm <span class="badge-pending">发布中</span></h3>
           <p>Node.js 18+，装到 <span class="mono">~/Applications</span>，无需 sudo。</p>
+          <p class="note"><strong>npm 包正在发布，命令暂不可用；请先使用 DMG 或 Homebrew。</strong> 发布后会恢复 <span class="mono">npm install -g astfind</span>。</p>
+          <!-- npm 发布后恢复：
           <div class="command">
             <code id="npm-command">npm install -g astfind &amp;&amp; astfind</code>
             <button class="copy" type="button" data-copy="#npm-command" aria-label="复制 npm 安装命令">复制</button>
           </div>
           <p class="note">安装前校验 SHA-256、bundle ID、arm64 与代码签名完整性。</p>
+          -->
         </div>
       </div>
       <p class="brew-note">Homebrew：<a class="mono" href="https://github.com/artrobin-cn/homebrew-astfind">brew install --cask artrobin-cn/astfind/astfind</a></p>
