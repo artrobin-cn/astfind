@@ -1,5 +1,5 @@
 {
-  "name": "astfind",
+  "name": "@artrobin/astfind",
   "version": "0.4.1",
   "description": "Astfind: local-first unified file and content search for macOS (Apple Silicon)",
   "keywords": [
@@ -44,6 +44,6 @@
     "test": "node --test test/*.test.js"
   },
   "optionalDependencies": {
-    "@astfind/darwin-arm64": "0.4.1"
+    "@artrobin/astfind-darwin-arm64": "0.4.1"
   }
 }

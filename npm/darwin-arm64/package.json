@@ -1,5 +1,5 @@
 {
-  "name": "@astfind/darwin-arm64",
+  "name": "@artrobin/astfind-darwin-arm64",
   "version": "0.4.1",
   "description": "Astfind.app payload for macOS arm64",
   "homepage": "https://github.com/artrobin-cn/astfind",

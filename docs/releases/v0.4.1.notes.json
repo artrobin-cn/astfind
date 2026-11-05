@@ -2,11 +2,11 @@
   "zh": [
     "应用内自动更新：菜单栏与设置页可检查新版本；下载后校验 SHA-256、bundle ID 与代码签名，安装失败自动回滚。",
     "更新清单与安装包由同一 HTTPS 站点提供；未配置更新源时不会发起任何版本检查请求。",
-    "官网、GitHub Releases 与 Homebrew 已更新到 0.4.1；npm 包待发布。"
+    "官网、GitHub Releases、Homebrew 与 npm 已更新到 0.4.1。"
   ],
   "en": [
     "Built-in updates: check from the menu bar or Settings. Downloads are verified with SHA-256, bundle ID and code signature, with automatic rollback on failure.",
     "The manifest and archive are served from the same HTTPS host. No update request is made when no feed is configured.",
-    "Website, GitHub Releases and Homebrew are updated to 0.4.1; the npm package is pending publication."
+    "Website, GitHub Releases, Homebrew and npm are updated to 0.4.1."
   ]
 }

@@ -1,4 +1,4 @@
-# @astfind/darwin-arm64
+# @artrobin/astfind-darwin-arm64
 
 Payload package for [Astfind](https://github.com/artrobin-cn/astfind).
 

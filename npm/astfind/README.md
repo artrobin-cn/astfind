@@ -5,7 +5,7 @@ text in videos, and natural-language image/video search. This npm package instal
 the menu-bar app and provides an `astfind` launcher.
 
 ```bash
-npm install -g astfind   # Apple Silicon, Node.js 18+
+npm install -g @artrobin/astfind   # Apple Silicon, Node.js 18+
 astfind                  # installs if needed, then launches
 ```
 
@@ -16,7 +16,7 @@ astfind                  # installs if needed, then launches
   `arm64` architecture, and the code-signature seal.
 - Replaces an existing install atomically; on failure the previous app is restored.
 - Never downloads anything at install time: the app is shipped inside
-  `@astfind/darwin-arm64`.
+  `@artrobin/astfind-darwin-arm64`.
 - Does not start the app from the npm cache. A stable path is required for
   macOS privacy permissions (Full Disk Access) and for updates.
 

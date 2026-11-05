@@ -1,6 +1,6 @@
 'use strict';
 
-// Installs the Astfind.app payload shipped inside @astfind/darwin-arm64.
+// Installs the Astfind.app payload shipped inside @artrobin/astfind-darwin-arm64.
 //
 // Design constraints:
 // - No network at install time: the payload is already in node_modules.
@@ -80,7 +80,7 @@ function resolvePayloadDir(options = {}) {
     // Development checkout: npm/darwin-arm64 next to npm/astfind.
     candidates.push(path.join(__dirname, '..', '..', 'darwin-arm64'));
     try {
-      const manifest = require.resolve('@astfind/darwin-arm64/package.json', {
+      const manifest = require.resolve('@artrobin/astfind-darwin-arm64/package.json', {
         paths: [path.join(__dirname, '..')],
       });
       candidates.push(path.dirname(manifest));
@@ -94,7 +94,7 @@ function resolvePayloadDir(options = {}) {
     }
   }
   return fail(
-    'Astfind payload not found. Reinstall the package (npm i -g astfind) or install the DMG from the releases page.',
+    'Astfind payload not found. Reinstall the package (npm i -g @artrobin/astfind) or install the DMG from the releases page.',
   );
 }
 
@@ -142,13 +142,13 @@ function checkPayloadVersion(payloadDir) {
     return fail(`invalid payload package.json in ${payloadDir}`);
   }
   const own = require('../package.json');
-  if (payload.name && payload.name !== '@astfind/darwin-arm64') {
+  if (payload.name && payload.name !== '@artrobin/astfind-darwin-arm64') {
     return fail(`unexpected payload package: ${payload.name}`);
   }
   if (payload.version && payload.version !== own.version) {
     fail(
       `Astfind payload version ${payload.version} does not match CLI ${own.version}; ` +
-        'reinstall with: npm i -g astfind@latest',
+        'reinstall with: npm i -g @artrobin/astfind@latest',
     );
   }
 }

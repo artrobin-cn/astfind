@@ -112,7 +112,7 @@ brew install --cask artrobin-cn/astfind/astfind
 
 > 国内网络：Homebrew cask 从 GitHub Releases 下载 DMG，可能较慢或超时；失败时请使用上面的官网直链。
 
-**npm**：发布中，暂不可用。发布后使用 `npm install -g astfind && astfind`；安装到 `~/Applications`，无需 sudo，安装前校验 SHA-256、bundle ID、arm64 与代码签名完整性。
+**npm**（Node.js 18+）：`npm install -g @artrobin/astfind && astfind`。安装到 `~/Applications`，无需 sudo；安装前校验 SHA-256、bundle ID、arm64 与代码签名完整性。
 
 ### 第一次使用
 

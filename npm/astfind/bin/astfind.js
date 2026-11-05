@@ -79,7 +79,7 @@ function main(argv) {
       console.log(`Astfind ${pkg.version} is already installed.`);
     } else {
       console.log(`Installed app: ${installed}; npm package: ${pkg.version}.`);
-      console.log('Update with: npm i -g astfind@latest');
+      console.log('Update with: npm i -g @artrobin/astfind@latest');
     }
     return 0;
   }

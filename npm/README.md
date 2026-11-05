@@ -12,7 +12,7 @@ npm/
   scripts/stage.mjs     从已构建的 Astfind.app 生成可发布包
 ```
 
-- `astfind` 在主包里声明 `optionalDependencies: { "@astfind/darwin-arm64": "<version>" }`。
+- `astfind` 在主包里声明 `optionalDependencies: { "@artrobin/astfind-darwin-arm64": "<version>" }`。
 - 平台包用 `os: ["darwin"]`、`cpu: ["arm64"]` 限定，npm 只会在 Apple Silicon Mac 上安装它。
 - 安装时不解压到 npm/npx 缓存：必须落到稳定目录，否则 TCC（完全磁盘访问）和更新身份都会失效。
 
@@ -52,8 +52,8 @@ ASTFIND_PAYLOAD_DIR=AstfindKit/build/npm/darwin-arm64 \
 
 ```bash
 npm login
-npm publish AstfindKit/build/npm/artifacts/astfind-darwin-arm64-<version>.tgz --access public
-npm publish AstfindKit/build/npm/artifacts/astfind-<version>.tgz --access public
+npm publish AstfindKit/build/npm/artifacts/artrobin-astfind-darwin-arm64-<version>.tgz --access public
+npm publish AstfindKit/build/npm/artifacts/artrobin-astfind-<version>.tgz --access public
 ```
 
 也可以一条命令完成发布、版本查询和安装 smoke test：
@@ -63,7 +63,7 @@ npm publish AstfindKit/build/npm/artifacts/astfind-<version>.tgz --access public
 ./npm/scripts/publish.sh 123456      # 临时传 6 位 OTP
 ```
 
-- `@astfind` scope 需要先在 npm 建好并归账号所有；平台包必须带 `--access public`。
+- `@artrobin` 是账号自动拥有的 scope，不需要另外建 org；平台包必须带 `--access public`。
 - 建议在 GitHub Actions 里用 OIDC 发布并加 `--provenance`（`id-token: write`）；本地 `npm publish --provenance` 不可用。
 - 账号开 2FA。发布脚本的 postinstall 本身就是执行通道，账号被盗等于供应链失守。
 - 发布前确认 `npm/astfind/package.json` 的 `repository` / `homepage` 指向公开仓库。
@@ -88,14 +88,14 @@ npm publish AstfindKit/build/npm/artifacts/astfind-<version>.tgz --access public
 | 变量 | 用途 |
 |---|---|
 | `ASTFIND_INSTALL_ROOT` | 覆盖安装目录（必须是绝对路径；默认 `~/Applications`） |
-| `ASTFIND_PAYLOAD_DIR` | 直接指定负载目录（开发/测试；默认找 `@astfind/darwin-arm64`） |
+| `ASTFIND_PAYLOAD_DIR` | 直接指定负载目录（开发/测试；默认找 `@artrobin/astfind-darwin-arm64`） |
 | `ASTFIND_SKIP_INSTALL=1` | 跳过 postinstall（CI 或只想要 CLI 时） |
 
 ## 安全边界
 
 - 校验和只能证明“包没损坏”，不能证明“包是官方发布的”；真实性靠 npm provenance + 2FA + 受保护的账号。
 - 应用未公证。npm 安装通常不带浏览器 quarantine，但这是分发渠道行为，不是安全背书。
-- npm 只负责首次安装；更新仍走 App 内 B1 渠道或 `npm i -g astfind@latest`，不要同时启用两条自动更新路径。
+- npm 只负责首次安装；更新仍走 App 内 B1 渠道或 `npm i -g @artrobin/astfind@latest`，不要同时启用两条自动更新路径。
 - 模型权重不随 npm 包分发。
 
 ## 相关

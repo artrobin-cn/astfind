@@ -36,7 +36,7 @@ function sha256(file) {
   return crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 }
 
-// Builds the same shape as @astfind/darwin-arm64: Astfind.zip + SHA256SUMS.
+// Builds the same shape as @artrobin/astfind-darwin-arm64: Astfind.zip + SHA256SUMS.
 function makePayload({ bundleId = 'edu.astfind.app', version = '0.2.7', tamper = false } = {}) {
   const root = tempDir('astfind-payload-');
   const app = path.join(root, 'Astfind.app');

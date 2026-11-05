@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-// Installs the app during `npm i -g astfind`. The CLI also installs lazily, so
+// Installs the app during `npm i -g @artrobin/astfind`. The CLI also installs lazily, so
 // `npm install --ignore-scripts` still works on first run.
 
 if (process.env.ASTFIND_SKIP_INSTALL === '1') {

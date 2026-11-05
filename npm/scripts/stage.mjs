@@ -5,7 +5,7 @@
 //
 // Output: AstfindKit/build/npm/
 //   astfind/                  main package (CLI + installer)
-//   darwin-arm64/             @astfind/darwin-arm64 payload (Astfind.zip)
+//   darwin-arm64/             @artrobin/astfind-darwin-arm64 payload (Astfind.zip)
 //   artifacts/*.tgz           npm pack output
 //
 // Nothing is published. The platform package must be published before the main
@@ -72,7 +72,7 @@ for (const name of ['LICENSE', 'NOTICE']) {
 
 const mainManifest = JSON.parse(fs.readFileSync(path.join(sourceMain, 'package.json'), 'utf8'));
 mainManifest.version = version;
-mainManifest.optionalDependencies = { '@astfind/darwin-arm64': version };
+mainManifest.optionalDependencies = { '@artrobin/astfind-darwin-arm64': version };
 delete mainManifest.scripts.test; // tests are not published
 fs.writeFileSync(path.join(mainDir, 'package.json'), `${JSON.stringify(mainManifest, null, 2)}\n`);
 
