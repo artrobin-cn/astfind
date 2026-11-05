@@ -185,6 +185,8 @@ swift test
 
 目录：`AstfindKit/`（主体 SwiftPM 包）、`oil-find/`（上游最小源码子集）、`AstfindPoC/`（Phase 0 验证）、`npm/`（npm 分发）、`packaging/homebrew/`（cask 模板）。
 
+发布流程（私有开发仓 → 公开快照）见 [docs/release-process.md](docs/release-process.md)。
+
 </details>
 
 ## 路线图
